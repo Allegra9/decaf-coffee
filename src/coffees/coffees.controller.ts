@@ -27,6 +27,7 @@ export class CoffeesController {
 
   @Post()
   create(@Body() body: CreateCoffeeDto) {
+    console.log(body instanceof CreateCoffeeDto);
     return this.coffeesService.create(body);
   }
 
