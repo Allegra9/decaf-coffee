@@ -16,12 +16,12 @@ export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
   @Get()
-  findAll(): Coffee[] {
+  findAll(): Promise<Coffee[]> {
     return this.coffeesService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Coffee {
+  findOne(@Param('id') id: string): Promise<Coffee> {
     return this.coffeesService.findOne(id);
   }
 

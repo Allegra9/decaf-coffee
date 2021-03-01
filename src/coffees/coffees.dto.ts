@@ -8,7 +8,7 @@ export class CreateCoffeeDto {
   brand: string;
 
   @IsString({ each: true }) // each value is a string
-  flavors: string[];
+  flavours: string[];
 }
 
 // same type as CreateCoffeeDto but with all of the properties set to optional
