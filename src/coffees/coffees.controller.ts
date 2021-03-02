@@ -6,7 +6,9 @@ import {
   Body,
   Delete,
   Patch,
+  Query,
 } from '@nestjs/common';
+import { PaginationQueryDto } from 'src/common/paginationQuery.dto';
 import { CreateCoffeeDto, UpdateCoffeeDto } from './coffees.dto';
 import { CoffeesService } from './coffees.service';
 import { Coffee } from './entities/coffee.entity';
@@ -16,8 +18,8 @@ export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
   @Get()
-  findAll(): Promise<Coffee[]> {
-    return this.coffeesService.findAll();
+  findAll(@Query() paginationQuery: PaginationQueryDto): Promise<Coffee[]> {
+    return this.coffeesService.findAll(paginationQuery);
   }
 
   @Get(':id')
