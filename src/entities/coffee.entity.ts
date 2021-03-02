@@ -18,6 +18,9 @@ export class Coffee {
   @Column()
   brand: string;
 
+  @Column({ default: 0 })
+  recommendations: number;
+
   @JoinTable()
   @ManyToMany((type) => Flavour, (flavour) => flavour.coffees, {
     cascade: true, // ['insert'] we can limit cascade to just insert or update

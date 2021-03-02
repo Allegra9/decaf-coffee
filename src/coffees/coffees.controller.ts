@@ -11,7 +11,7 @@ import {
 import { PaginationQueryDto } from 'src/common/paginationQuery.dto';
 import { CreateCoffeeDto, UpdateCoffeeDto } from './coffees.dto';
 import { CoffeesService } from './coffees.service';
-import { Coffee } from './entities/coffee.entity';
+import { Coffee } from '../entities/coffee.entity';
 
 @Controller('coffees')
 export class CoffeesController {
