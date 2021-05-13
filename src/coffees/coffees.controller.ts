@@ -7,6 +7,8 @@ import {
   Delete,
   Patch,
   Query,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { PaginationQueryDto } from 'src/common/paginationQuery.dto';
 import { CreateCoffeeDto, UpdateCoffeeDto } from './coffees.dto';
@@ -17,6 +19,7 @@ import { Coffee } from '../entities/coffee.entity';
 export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
+  @UsePipes(ValidationPipe)
   @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto): Promise<Coffee[]> {
     return this.coffeesService.findAll(paginationQuery);
