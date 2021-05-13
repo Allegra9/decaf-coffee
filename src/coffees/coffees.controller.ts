@@ -16,6 +16,7 @@ import { CoffeesService } from './coffees.service';
 import { Coffee } from '../entities/coffee.entity';
 import { Public } from 'src/common/decorators/public.decorator';
 import { ParseIntPipe } from 'src/common/pipes/parse-int';
+import { Protocol } from 'src/common/decorators/protocol.decorator';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -24,7 +25,11 @@ export class CoffeesController {
   @Public()
   @UsePipes(ValidationPipe)
   @Get()
-  findAll(@Query() paginationQuery: PaginationQueryDto): Promise<Coffee[]> {
+  findAll(
+    @Protocol('https') protocol: string,
+    @Query() paginationQuery: PaginationQueryDto,
+  ): Promise<Coffee[]> {
+    console.log(protocol);
     return this.coffeesService.findAll(paginationQuery);
   }
 
