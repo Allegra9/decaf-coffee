@@ -15,6 +15,7 @@ import { CreateCoffeeDto, UpdateCoffeeDto } from './coffees.dto';
 import { CoffeesService } from './coffees.service';
 import { Coffee } from '../entities/coffee.entity';
 import { Public } from 'src/common/decorators/public.decorator';
+import { ParseIntPipe } from 'src/common/pipes/parse-int';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -28,7 +29,7 @@ export class CoffeesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Coffee> {
+  findOne(@Param('id', ParseIntPipe) id: string): Promise<Coffee> {
     return this.coffeesService.findOne(id);
   }
 
