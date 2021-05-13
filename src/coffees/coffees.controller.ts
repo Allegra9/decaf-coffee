@@ -14,11 +14,13 @@ import { PaginationQueryDto } from 'src/common/paginationQuery.dto';
 import { CreateCoffeeDto, UpdateCoffeeDto } from './coffees.dto';
 import { CoffeesService } from './coffees.service';
 import { Coffee } from '../entities/coffee.entity';
+import { Public } from 'src/common/decorators/public.decorator';
 
 @Controller('coffees')
 export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
+  @Public()
   @UsePipes(ValidationPipe)
   @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto): Promise<Coffee[]> {
